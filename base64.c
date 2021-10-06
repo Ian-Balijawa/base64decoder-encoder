@@ -90,3 +90,16 @@ char *base64_encode(const unsigned char *data,
  
     return decoded_data;
 }
+
+int main(){
+    
+    char * data = "Hello World!";
+    long input_size = strlen(data);
+    char * encoded_data = base64_encode(data, input_size, &input_size);
+    printf("Encoded Data is: %s \n",encoded_data);
+    
+    long decode_size = strlen(encoded_data);
+    char * decoded_data = base64_decode(encoded_data, decode_size, &decode_size);
+    printf("Decoded Data is: %s \n",decoded_data);
+    exit(0);
+}
