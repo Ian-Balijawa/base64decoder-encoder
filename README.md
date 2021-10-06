@@ -77,4 +77,4 @@ An Example program to demonstrate the Base64 library by giving the inputs throug
     -   _`<source>`_ - String or path/to/file to be converted
     -   _`<destination>`_ - Path/to/converted/file
 
-### This README Cloned/generated from [here](https://github.com/elzoughby/Base64/blob/master/README.md)
+### This README file is Cloned/generated from [here](https://github.com/elzoughby/Base64/blob/master/README.md)
