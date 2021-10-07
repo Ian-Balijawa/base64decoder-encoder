@@ -11,9 +11,32 @@ static char encoding_table[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
                                 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
                                 'w', 'x', 'y', 'z', '0', '1', '2', '3',
                                 '4', '5', '6', '7', '8', '9', '+', '/'};
-static char *decoding_table = NULL;
+static char * decoding_table = NULL;
+
 static int mod_table[] = {0, 2, 1};
  
+void build_decoding_table();
+
+void base64_cleanup();
+
+char * base64_encode(const unsigned char *data,size_t input_length,size_t *output_length);
+
+unsigned char * base64_decode(const char *data, size_t input_length, size_t *output_length);
+
+
+int main(){
+    
+    char * data = "Hello World!";
+    long input_size = strlen(data);
+    char * encoded_data = base64_encode(data, input_size, &input_size);
+    printf("Encoded Data is: %s \n",encoded_data);
+    
+    long decode_size = strlen(encoded_data);
+    char * decoded_data = base64_decode(encoded_data, decode_size, &decode_size);
+    printf("Decoded Data is: %s \n",decoded_data);
+    exit(0);
+}
+
 void build_decoding_table() {
  
     decoding_table = malloc(256);
@@ -89,17 +112,4 @@ char * base64_encode(const unsigned char *data,
     }
  
     return decoded_data;
-}
-
-int main(){
-    
-    char * data = "Hello World!";
-    long input_size = strlen(data);
-    char * encoded_data = base64_encode(data, input_size, &input_size);
-    printf("Encoded Data is: %s \n",encoded_data);
-    
-    long decode_size = strlen(encoded_data);
-    char * decoded_data = base64_decode(encoded_data, decode_size, &decode_size);
-    printf("Decoded Data is: %s \n",decoded_data);
-    exit(0);
 }
